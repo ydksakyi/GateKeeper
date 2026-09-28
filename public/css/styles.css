@@ -1,0 +1,257 @@
+:root {
+	--ground: #e4eae5;
+	--panel: #fbfcfa;
+	--ink: #14202b;
+	--muted: #47555f;
+	--gold: #e3a72f;
+	--green: #1e6b46;
+	--red: #b3261e;
+	--focus: #0b57d0;
+	--serif:
+		'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia,
+		serif;
+	--sans:
+		system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+html {
+	-webkit-text-size-adjust: 100%;
+}
+body {
+	margin: 0;
+	background: var(--ground);
+	color: var(--ink);
+	font: 1rem/1.55 var(--sans);
+}
+
+/* The one memorable element: a woven strip in kente colours. */
+.kente {
+	height: 16px;
+	background:
+		repeating-linear-gradient(
+			0deg,
+			rgba(20, 32, 43, 0.22) 0 2px,
+			transparent 2px 4px
+		),
+		repeating-linear-gradient(
+			90deg,
+			var(--gold) 0 26px,
+			var(--ink) 26px 32px,
+			var(--green) 32px 58px,
+			var(--ink) 58px 64px,
+			var(--red) 64px 90px,
+			var(--ink) 90px 96px
+		);
+}
+
+.site-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	max-width: 44rem;
+	margin: 0 auto;
+	padding: 1rem 1rem 0;
+}
+.brand {
+	font: 700 1.4rem var(--serif);
+	color: var(--ink);
+	text-decoration: none;
+}
+nav {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+}
+nav a,
+nav button {
+	font: inherit;
+}
+
+main {
+	max-width: 44rem;
+	margin: 0 auto;
+	padding: 1rem;
+}
+main:focus {
+	outline: none;
+}
+
+.panel {
+	max-width: 30rem;
+	margin: 1.5rem 0;
+	padding: 1.5rem;
+	background: var(--panel);
+	border: 2px solid var(--ink);
+	border-radius: 4px;
+	box-shadow: 6px 6px 0 var(--ink);
+}
+.panel.wide {
+	max-width: none;
+}
+
+h1 {
+	margin: 0 0 0.5rem;
+	font: 700 1.9rem/1.2 var(--serif);
+}
+p {
+	margin: 0.5rem 0;
+}
+.lede {
+	color: var(--muted);
+}
+
+a {
+	color: var(--ink);
+	text-underline-offset: 3px;
+}
+:focus-visible {
+	outline: 3px solid var(--focus);
+	outline-offset: 2px;
+}
+
+form {
+	display: grid;
+	gap: 1rem;
+	margin-top: 1.25rem;
+}
+.field {
+	display: grid;
+	gap: 0.3rem;
+}
+label {
+	font-weight: 600;
+}
+.hint {
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+input[type='text'],
+input[type='email'],
+input[type='password'],
+select {
+	width: 100%;
+	padding: 0.65rem 0.75rem;
+	font: inherit;
+	color: var(--ink);
+	background: #fff;
+	border: 2px solid var(--ink);
+	border-radius: 3px;
+}
+input[aria-invalid='true'] {
+	border-color: var(--red);
+}
+.error {
+	color: var(--red);
+	font-size: 0.9rem;
+	margin: 0;
+}
+.check {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	font-weight: 400;
+}
+
+button,
+.button {
+	padding: 0.7rem 1.1rem;
+	font: 600 1rem var(--sans);
+	color: #fff;
+	background: var(--ink);
+	border: 2px solid var(--ink);
+	border-radius: 3px;
+	cursor: pointer;
+}
+button.secondary {
+	color: var(--ink);
+	background: transparent;
+}
+button:disabled {
+	opacity: 0.6;
+	cursor: progress;
+}
+.linklike {
+	padding: 0;
+	color: var(--ink);
+	background: none;
+	border: 0;
+	text-decoration: underline;
+	font-weight: 400;
+}
+
+.alert {
+	padding: 0.7rem 0.9rem;
+	border-left: 6px solid var(--red);
+	background: #f7e5e3;
+}
+.alert.ok {
+	border-color: var(--green);
+	background: #e0efe6;
+}
+
+dl {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 0.4rem 1.25rem;
+	margin: 1rem 0;
+}
+dt {
+	color: var(--muted);
+}
+dd {
+	margin: 0;
+	overflow-wrap: anywhere;
+}
+.badge {
+	display: inline-block;
+	padding: 0 0.5rem;
+	border: 1.5px solid var(--ink);
+	border-radius: 3px;
+	font-size: 0.85rem;
+}
+
+.table-wrap {
+	overflow-x: auto;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.95rem;
+}
+th,
+td {
+	padding: 0.5rem 0.6rem;
+	text-align: left;
+	border-bottom: 1.5px solid var(--ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.panel {
+		animation: settle 0.25s ease-out;
+	}
+	@keyframes settle {
+		from {
+			transform: translateY(4px);
+			opacity: 0.6;
+		}
+		to {
+			transform: none;
+			opacity: 1;
+		}
+	}
+}
+@media (max-width: 30rem) {
+	.panel {
+		padding: 1.1rem;
+		box-shadow: 4px 4px 0 var(--ink);
+	}
+	dl {
+		grid-template-columns: 1fr;
+	}
+}
